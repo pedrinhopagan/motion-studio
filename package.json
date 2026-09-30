@@ -1,0 +1,16 @@
+{
+  "name": "motion-studio",
+  "description": "Motion Studio: estúdio privado e local para criar, revisar e versionar vídeos e animações feitos em código.",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/pedrinhopagan/motion-studio.git"
+  },
+  "scripts": {
+    "setup": "bun install --cwd studio --frozen-lockfile && bun install --cwd tools --frozen-lockfile",
+    "dev": "bun run --cwd studio dev",
+    "build": "bun run --cwd studio build",
+    "start": "bun run --cwd studio start",
+    "check": "bun run --cwd studio check"
+  }
+}

@@ -1,0 +1,422 @@
+{
+  "schemaVersion": 1,
+  "id": "dogama-fornecedor",
+  "name": "Dogama: vídeo do fornecedor",
+  "description": "",
+  "status": "approved",
+  "favorite": false,
+  "width": 1440,
+  "height": 1440,
+  "fps": 60,
+  "duration": 29.8667,
+  "createdAt": "2026-09-29T20:30:46.446Z",
+  "contextPaths": [
+    ".koworker/tasks/acervo-de-motion-designs--132b236d/dogama-video-do-fornecedor-com-erp-e-catalogo-dr--e9c45336/prompt-video.md",
+    ".koworker/tasks/acervo-de-motion-designs--132b236d/dogama-video-do-fornecedor-com-erp-e-catalogo-dr--e9c45336/acervo.md",
+    ".koworker/tasks/acervo-de-motion-designs--132b236d/padrao-de-criacao-dos-videos-de-produto--306c1d4f/caso-dogama-fornecedor.md",
+    ".koworker/tasks/acervo-de-motion-designs--132b236d/padrao-de-criacao-dos-videos-de-produto--306c1d4f/narrativa-e-ritmo.md",
+    ".koworker/tasks/acervo-de-motion-designs--132b236d/padrao-de-criacao-dos-videos-de-produto--306c1d4f/som.md",
+    ".koworker/tasks/acervo-de-motion-designs--132b236d/migrar-render-para-gpu--3363b885/gpu.md"
+  ],
+  "scenes": [
+    {
+      "id": "erp",
+      "name": "Estoque no ERP",
+      "start": 0,
+      "end": 3.7333,
+      "description": "Uma venda própria baixa o estoque compartilhado de 40 para 39.",
+      "variants": [],
+      "selected": ""
+    },
+    {
+      "id": "publicar",
+      "name": "Publicação",
+      "start": 3.7333,
+      "end": 8.5333,
+      "description": "O produto é publicado no catálogo e se transforma em card.",
+      "variants": [],
+      "selected": ""
+    },
+    {
+      "id": "catalogo",
+      "name": "Catálogo e vitrines",
+      "start": 8.5333,
+      "end": 12.8,
+      "description": "O revendedor anuncia o mesmo produto em suas vitrines.",
+      "variants": [],
+      "selected": ""
+    },
+    {
+      "id": "vendas",
+      "name": "Vendas conectadas",
+      "start": 12.8,
+      "end": 16.5333,
+      "description": "As vendas chegam ao fornecedor a partir das vitrines dos revendedores.",
+      "variants": [],
+      "selected": ""
+    },
+    {
+      "id": "estoque",
+      "name": "Um estoque só",
+      "start": 16.5333,
+      "end": 19.4667,
+      "description": "Todas as vendas baixam o mesmo estoque.",
+      "variants": [],
+      "selected": ""
+    },
+    {
+      "id": "envio",
+      "name": "Envio",
+      "start": 19.4667,
+      "end": 22.1333,
+      "description": "O fornecedor escaneia e envia os pedidos.",
+      "variants": [],
+      "selected": ""
+    },
+    {
+      "id": "repasse",
+      "name": "Repasse",
+      "start": 22.1333,
+      "end": 24.8,
+      "description": "Os repasses liberados chegam à carteira.",
+      "variants": [],
+      "selected": ""
+    },
+    {
+      "id": "logo",
+      "name": "Fechamento",
+      "start": 24.8,
+      "end": 29.8667,
+      "description": "A carteira se transforma no símbolo e retorna ao primeiro quadro.",
+      "variants": [],
+      "selected": ""
+    }
+  ],
+  "references": [
+    {
+      "id": "mixkit-licenca",
+      "title": "Licença Mixkit",
+      "url": "https://mixkit.co/license/",
+      "description": "Músicas e efeitos da trilha: uso comercial livre, sem atribuição. A notificação é da própria Dogama."
+    }
+  ],
+  "notes": [],
+  "audition": {
+    "track": "assets/dogama-fornecedor/audio/cant-get-you-off-my-mind.mp3",
+    "offset": 12.8,
+    "volume": 0.35,
+    "originalVolume": 0,
+    "fadeIn": 0.3,
+    "fadeOut": 1.2,
+    "muffle": {
+      "enabled": true,
+      "until": 12.8,
+      "cutoff": 2200
+    },
+    "music": [
+      {
+        "file": "assets/dogama-fornecedor/audio/cant-get-you-off-my-mind.mp3",
+        "label": "Can't Get You Off My Mind",
+        "description": "Future bass · positiva · 75 BPM. Escolhida na v4.",
+        "offset": 12.8
+      },
+      {
+        "file": "assets/dogama-fornecedor/audio/its-love.mp3",
+        "label": "It's Love",
+        "description": "Corporativa · 110 BPM. Usada até a v3, recusada como música de elevador.",
+        "offset": 26.52
+      },
+      {
+        "file": "assets/dogama-fornecedor/audio/head-bang.mp3",
+        "label": "Head Bang",
+        "description": "Trap · 74 BPM. Usada na v1, recusada por soar melancólica.",
+        "offset": 0.14
+      }
+    ],
+    "effects": [
+      {
+        "id": "cliques",
+        "name": "Cliques",
+        "description": "Cada clique do cursor. O som sai do lado da tela onde o cursor está.",
+        "hits": [
+          {
+            "time": 3.7333,
+            "gain": 0,
+            "pan": 0.23
+          },
+          {
+            "time": 5.6,
+            "gain": 0,
+            "pan": 0.17
+          },
+          {
+            "time": 10.1333,
+            "gain": 0,
+            "pan": -0.3
+          },
+          {
+            "time": 20.8,
+            "gain": 0,
+            "pan": 0.15
+          }
+        ],
+        "options": [
+          {
+            "file": "assets/dogama-fornecedor/audio/sfx/clique-mouse.wav",
+            "label": "Mouse",
+            "start": 0,
+            "attack": 0.011,
+            "duration": 0.2,
+            "gain": -0.5,
+            "stem": false
+          },
+          {
+            "file": "assets/dogama-fornecedor/audio/sfx/clique-mouse-2.wav",
+            "label": "Mouse 2",
+            "start": 0,
+            "attack": 0.002,
+            "duration": 0.3,
+            "gain": -0.5,
+            "stem": false
+          },
+          {
+            "file": "assets/dogama-fornecedor/audio/sfx/clique-digital.wav",
+            "label": "Toque digital",
+            "start": 0,
+            "attack": 0.001,
+            "duration": 0.08,
+            "gain": -2,
+            "stem": false
+          }
+        ],
+        "selected": "assets/dogama-fornecedor/audio/sfx/clique-mouse-2.wav",
+        "volume": 0.5
+      },
+      {
+        "id": "movimento",
+        "name": "Movimento",
+        "description": "Câmera, cursor e morphs grandes em deslocamento. Os momentos marcam os picos de velocidade; o som é uma faixa contínua que segue a velocidade.",
+        "hits": [
+          {
+            "time": 3.033,
+            "label": "cursor",
+            "gain": 0,
+            "pan": 0
+          },
+          {
+            "time": 3.979,
+            "label": "cursor",
+            "gain": 0,
+            "pan": 0
+          },
+          {
+            "time": 4.899,
+            "label": "cursor",
+            "gain": 0,
+            "pan": 0
+          },
+          {
+            "time": 7.716,
+            "label": "câmera",
+            "gain": 0,
+            "pan": 0
+          },
+          {
+            "time": 8.779,
+            "label": "câmera",
+            "gain": 0,
+            "pan": 0
+          },
+          {
+            "time": 9.433,
+            "label": "cursor",
+            "gain": 0,
+            "pan": 0
+          },
+          {
+            "time": 10.651,
+            "label": "câmera",
+            "gain": 0,
+            "pan": 0
+          },
+          {
+            "time": 13.043,
+            "label": "câmera",
+            "gain": 0,
+            "pan": 0
+          },
+          {
+            "time": 14.531,
+            "label": "câmera",
+            "gain": 0,
+            "pan": 0
+          },
+          {
+            "time": 16.784,
+            "label": "câmera",
+            "gain": 0,
+            "pan": 0
+          },
+          {
+            "time": 19.715,
+            "label": "câmera",
+            "gain": 0,
+            "pan": 0
+          },
+          {
+            "time": 20.099,
+            "label": "cursor",
+            "gain": 0,
+            "pan": 0
+          },
+          {
+            "time": 22.38,
+            "label": "câmera",
+            "gain": 0,
+            "pan": 0
+          },
+          {
+            "time": 25.052,
+            "label": "câmera",
+            "gain": 0,
+            "pan": 0
+          },
+          {
+            "time": 26.649,
+            "label": "câmera",
+            "gain": 0,
+            "pan": 0
+          },
+          {
+            "time": 29.32,
+            "label": "câmera",
+            "gain": 0,
+            "pan": 0
+          }
+        ],
+        "options": [
+          {
+            "file": "assets/dogama-fornecedor/audio/stems/movimento-sopro.wav",
+            "label": "Sopro suave",
+            "start": 0,
+            "attack": 0,
+            "gain": -3.5,
+            "stem": true
+          },
+          {
+            "file": "assets/dogama-fornecedor/audio/stems/movimento-whoosh.wav",
+            "label": "Whoosh",
+            "start": 0,
+            "attack": 0,
+            "gain": -3.5,
+            "stem": true
+          }
+        ],
+        "selected": "assets/dogama-fornecedor/audio/stems/movimento-sopro.wav",
+        "volume": 0.5
+      },
+      {
+        "id": "vendas",
+        "name": "Momento de valor",
+        "description": "Uma notificação só, na primeira venda, junto do grave da música.",
+        "hits": [
+          {
+            "time": 12.8,
+            "gain": 0,
+            "pan": 0
+          }
+        ],
+        "options": [
+          {
+            "file": "assets/dogama-fornecedor/audio/sfx/notificacao-dogama.mp3",
+            "label": "Notificação Dogama",
+            "start": 0.53,
+            "attack": 0.02,
+            "gain": 1,
+            "stem": false
+          },
+          {
+            "file": "assets/dogama-fornecedor/audio/sfx/venda.wav",
+            "label": "Pop seco",
+            "start": 0,
+            "attack": 0.045,
+            "gain": 0,
+            "stem": false
+          }
+        ],
+        "selected": "assets/dogama-fornecedor/audio/sfx/notificacao-dogama.mp3",
+        "volume": 0.5
+      },
+      {
+        "id": "numeros",
+        "name": "Números",
+        "description": "Cada número que muda: estoque baixando e saldo subindo.",
+        "hits": [
+          {
+            "time": 1.6,
+            "gain": 0,
+            "pan": 0
+          },
+          {
+            "time": 17.3333,
+            "gain": 0,
+            "pan": 0
+          },
+          {
+            "time": 17.7333,
+            "gain": 0,
+            "pan": 0
+          },
+          {
+            "time": 18.1333,
+            "gain": 0,
+            "pan": 0
+          },
+          {
+            "time": 18.5333,
+            "gain": 0,
+            "pan": 0
+          },
+          {
+            "time": 22.9333,
+            "gain": 0,
+            "pan": 0
+          },
+          {
+            "time": 23.3333,
+            "gain": 0,
+            "pan": 0
+          },
+          {
+            "time": 23.7333,
+            "gain": 0,
+            "pan": 0
+          }
+        ],
+        "options": [
+          {
+            "file": "assets/dogama-fornecedor/audio/sfx/tique.wav",
+            "label": "Tique suave",
+            "start": 0.095,
+            "attack": 0.005,
+            "duration": 0.12,
+            "gain": -2,
+            "stem": false
+          },
+          {
+            "file": "assets/dogama-fornecedor/audio/sfx/bipe-digital.wav",
+            "label": "Bipe digital",
+            "start": 0,
+            "attack": 0.001,
+            "duration": 0.08,
+            "gain": -4,
+            "stem": false
+          }
+        ],
+        "selected": "assets/dogama-fornecedor/audio/sfx/bipe-digital.wav",
+        "volume": 0.5
+      }
+    ]
+  },
+  "approvedFile": "renders/dogama-fornecedor/v5/dogama-fornecedor.mp4"
+}

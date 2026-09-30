@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Dogama fornecedor</title>
+<style>
+@font-face{font-family:Inter;src:url(../../assets/dogama-fornecedor/fonts/inter-latin-wght-normal.woff2) format("woff2");font-weight:100 900}
+html,body{margin:0;background:#0b0f17;color:#cfd6e2;font:13px Inter,system-ui}
+canvas{display:block;width:min(100vw,calc(100vh - 48px));aspect-ratio:1}
+.bar{display:flex;gap:12px;align-items:center;padding:8px 12px;height:32px}
+input[type=range]{flex:1}
+body.render .bar{display:none}
+body.render canvas{width:1440px}
+</style>
+</head>
+<body>
+<canvas id="c" width="1440" height="1440"></canvas>
+<div class="bar"><button id="play">play</button><input id="scrub" type="range" min="0" max="29.8667" step="0.001" value="0"><span id="tc">0.000</span></div>
+<script type="module">
+import { DUR, FPS } from "./core.js";
+import { load, draw, subframes } from "./scene.js";
+import { createMotionRenderer } from "../../tools/motion-blur.js";
+
+const cv = document.getElementById("c");
+const q = new URLSearchParams(location.search);
+if (q.has("render")) document.body.classList.add("render");
+
+await document.fonts.load("600 16px Inter");
+await load();
+
+const renderer = createMotionRenderer({ canvas: cv, draw, duration: DUR });
+window.motionRenderer = renderer;
+window.seek = (t) => renderer.render(t, 1, FPS);
+window.subframes = subframes;
+window.seekBlur = (t, n, fps = FPS) => renderer.render(t, n, fps);
+window.ready = true;
+
+const scrub = document.getElementById("scrub"), tc = document.getElementById("tc");
+let playing = false, t0 = 0, base = 0;
+const show = (t) => { window.seek(t); scrub.value = t; tc.textContent = t.toFixed(3); };
+scrub.oninput = () => { playing = false; show(+scrub.value); };
+document.getElementById("play").onclick = () => { playing = !playing; t0 = performance.now(); base = +scrub.value; };
+const loop = () => { if (playing) show((base + (performance.now() - t0) / 1000) % DUR); requestAnimationFrame(loop); };
+show(+(q.get("t") ?? 0));
+if (!q.has("render")) loop();
+</script>
+</body>
+</html>

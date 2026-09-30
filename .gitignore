@@ -1,0 +1,14 @@
+.koworker/
+node_modules/
+studio/dist/
+.motion-studio/cache/
+.motion-studio/exports/
+.optmem/
+renders/
+__pycache__/
+*.pyc
+.env
+.env.*
+!.env.example
+*.log
+*.tsbuildinfo

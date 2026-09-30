@@ -1,0 +1,324 @@
+/* Player de renders, fonte ao vivo e teste de trilha. */
+
+.preview-select {
+  margin-left: auto;
+  max-width: 60%;
+}
+.player {
+  display: flex;
+  flex-direction: column;
+  background: var(--panel);
+  container-type: inline-size;
+}
+.player-stage {
+  container-type: size;
+  position: relative;
+  height: clamp(320px, 38vw, 540px);
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: var(--sidebar);
+}
+.player-stage > video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  cursor: pointer;
+}
+.player.is-fullscreen {
+  background: #0b0b0e;
+}
+.player.is-fullscreen .player-stage {
+  flex: 1;
+  height: auto;
+  padding: 0;
+  background: #0b0b0e;
+}
+.player.is-fullscreen .player-controls {
+  padding: 8px 24px 16px;
+}
+.stage-play {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  display: grid;
+  place-items: center;
+  border: 1px solid #ffffff26;
+  border-radius: 50%;
+  background: #1b1c29d9;
+  color: #fff;
+  box-shadow: 0 6px 24px #0005;
+  backdrop-filter: blur(6px);
+}
+.stage-play > svg {
+  margin-left: 3px;
+}
+.stage-play:hover {
+  background: #403851;
+}
+.stage-play:active {
+  transform: scale(0.96);
+}
+.stage-error {
+  position: absolute;
+  inset: 0;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  background: #15151eea;
+  color: var(--soft);
+  font-size: 13px;
+  text-align: center;
+}
+.stage-error p {
+  max-width: 50ch;
+}
+.stage-dimensions {
+  position: absolute;
+  right: 12px;
+  bottom: 10px;
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: #111216d0;
+  color: #b2b3c2;
+  font:
+    10px/1.5 "SFMono-Regular",
+    Consolas,
+    "Liberation Mono",
+    monospace;
+  pointer-events: none;
+}
+.source-preview {
+  display: block;
+  width: min(100cqw, calc(100cqh * var(--source-ratio)));
+  height: auto;
+  flex-shrink: 0;
+  border: 0;
+  border-radius: 4px;
+  background: var(--panel);
+  box-shadow:
+    0 2px 8px #0004,
+    0 16px 48px #0005;
+}
+.source-surface {
+  position: absolute;
+  inset: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+.source-surface:focus-visible {
+  outline-offset: -4px;
+}
+.stage-loading {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  background: var(--sidebar);
+  color: var(--faint);
+  font-size: 12px;
+}
+.player-live .stage-dimensions {
+  bottom: 8px;
+}
+.preview-toolbar .badge-live {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: var(--success);
+  background: var(--success-soft);
+  border-color: transparent;
+}
+.badge-live::before {
+  content: "";
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+/* Controles */
+.player-controls {
+  padding: 8px 16px 14px;
+  border-top: 1px solid var(--line-soft);
+}
+.scrubber {
+  position: relative;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  touch-action: none;
+  outline: none;
+}
+.scrubber-track {
+  position: relative;
+  width: 100%;
+  height: 4px;
+  border-radius: 4px;
+  background: var(--line);
+  transition: height 0.12s;
+}
+.scrubber:hover .scrubber-track,
+.scrubber.dragging .scrubber-track {
+  height: 6px;
+}
+.scrubber:focus-visible .scrubber-track {
+  outline: 2px solid var(--accent);
+  outline-offset: 5px;
+}
+.scrubber-fill {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: var(--accent);
+  transform-origin: left;
+}
+.scrubber-marker {
+  position: absolute;
+  top: -1px;
+  bottom: -1px;
+  width: 2px;
+  margin-left: -1px;
+  background: var(--panel);
+}
+.scrubber-marker.cue {
+  top: -5px;
+  bottom: -5px;
+  border-radius: 1px;
+  background: var(--warning);
+}
+.scrubber-thumb {
+  position: absolute;
+  top: 50%;
+  width: 13px;
+  height: 13px;
+  margin: -6.5px 0 0 -6.5px;
+  border-radius: 50%;
+  background: var(--ink);
+  box-shadow: 0 0 0 3px #0005;
+  transform: scale(0);
+  transition: transform 0.12s;
+}
+.scrubber:hover .scrubber-thumb,
+.scrubber.dragging .scrubber-thumb,
+.scrubber:focus-visible .scrubber-thumb {
+  transform: scale(1);
+}
+.scrubber-hover {
+  position: absolute;
+  bottom: 16px;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 4px 8px;
+  border: 1px solid #50515f;
+  border-radius: 6px;
+  background: #383844;
+  font-size: 11px;
+  line-height: 1.4;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+.scrubber-hover small {
+  color: var(--soft);
+}
+.transport {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+.transport-group {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  min-width: 0;
+}
+.transport-play {
+  width: 34px;
+  height: 34px;
+  margin: 0 4px;
+  display: grid;
+  place-items: center;
+  border: 0;
+  border-radius: 50%;
+  background: var(--ink);
+  color: var(--bg);
+}
+.transport-play:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+.transport-play:hover:not(:disabled) {
+  background: #fff;
+}
+.transport-play:active:not(:disabled) {
+  transform: scale(0.95);
+}
+.timecode {
+  margin-left: 10px;
+  color: var(--ink);
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.timecode > span {
+  color: var(--faint);
+}
+.volume-control {
+  display: flex;
+  align-items: center;
+}
+.volume-control > .range {
+  width: 0;
+  opacity: 0;
+  transition:
+    width 0.18s,
+    opacity 0.18s,
+    margin 0.18s;
+}
+.volume-control:hover > .range,
+.volume-control:focus-within > .range {
+  width: 76px;
+  margin: 0 6px 0 2px;
+  opacity: 1;
+}
+@container (max-width: 480px) {
+  .timecode > span {
+    display: none;
+  }
+  .volume-control > .range {
+    display: none;
+  }
+}
+@media (max-width: 650px) {
+  .player-stage {
+    height: min(92vw, 420px);
+    padding: 8px;
+  }
+  .preview-select {
+    max-width: 100%;
+  }
+  .transport .volume-control,
+  .transport a.icon-button {
+    display: none;
+  }
+  .timecode {
+    margin-left: 4px;
+    font-size: 11px;
+  }
+}

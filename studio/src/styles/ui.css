@@ -1,0 +1,391 @@
+/* Componentes globais: seleção, avisos, sliders e campos. */
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  color: var(--soft);
+  font-size: 12px;
+}
+
+/* Select */
+.select {
+  position: relative;
+  min-width: 0;
+}
+.select-trigger {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  min-width: 0;
+  height: 38px;
+  padding: 0 10px 0 12px;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  background: var(--sidebar);
+  color: var(--ink);
+  font-size: 13px;
+  text-align: left;
+}
+.select-trigger:hover {
+  border-color: #4a4b58;
+}
+.select-trigger[aria-expanded="true"] {
+  border-color: var(--accent);
+}
+.select-trigger > svg:last-child {
+  margin-left: auto;
+  color: var(--faint);
+  transition: transform 0.15s;
+}
+.select-trigger[aria-expanded="true"] > svg:last-child {
+  transform: rotate(180deg);
+}
+.select-value {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.select-value.placeholder {
+  color: var(--faint);
+}
+.select-sm .select-trigger {
+  height: 30px;
+  padding: 0 8px 0 10px;
+  border-radius: 6px;
+  font-size: 12px;
+}
+.select-ghost .select-trigger {
+  background: transparent;
+  border-color: transparent;
+  color: var(--soft);
+}
+.select-ghost .select-trigger:hover,
+.select-ghost .select-trigger[aria-expanded="true"] {
+  background: var(--hover);
+  border-color: transparent;
+  color: var(--ink);
+}
+.select-list {
+  position: fixed;
+  inset: auto;
+  margin: 0;
+  padding: 4px;
+  min-width: 160px;
+  max-width: min(420px, calc(100vw - 16px));
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  background: var(--raised);
+  color: var(--ink);
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  box-shadow:
+    0 14px 36px #0009,
+    0 2px 6px #0005;
+}
+.select-list:popover-open {
+  animation: pop-in 0.12s ease-out;
+}
+.select-group {
+  padding: 8px 10px 4px;
+  font-size: 11px;
+  color: var(--faint);
+}
+.select-item:not(:first-child) > .select-group {
+  margin-top: 4px;
+  border-top: 1px solid var(--line-soft);
+}
+.select-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 7px 10px;
+  border-radius: 6px;
+  font-size: 13px;
+  cursor: pointer;
+  user-select: none;
+}
+.select-option > span {
+  flex: 1;
+  min-width: 0;
+}
+.select-option small {
+  display: block;
+  margin-top: 1px;
+  font-size: 11px;
+  color: var(--faint);
+}
+.select-option.active {
+  background: var(--hover);
+}
+.select-option[aria-selected="true"] {
+  color: var(--accent);
+}
+
+/* Avisos */
+.file-share-actions,
+.export-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.file-share-actions {
+  flex-shrink: 0;
+}
+.export-actions {
+  flex-wrap: wrap;
+}
+.export-original {
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+}
+.export-original > div:first-child,
+.export-result {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.export-original > div:first-child > span {
+  color: var(--faint);
+  font-variant-numeric: tabular-nums;
+}
+.export-original > code {
+  display: block;
+  margin: 8px 0 16px;
+  color: var(--soft);
+  font-size: 11px;
+  overflow-wrap: anywhere;
+}
+.export-compression {
+  padding-top: 4px;
+}
+.export-compression h3 {
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+.export-fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.export-compression > .button {
+  align-self: flex-start;
+}
+.export-result {
+  padding: 12px;
+  border-radius: 7px;
+  background: var(--success-soft);
+  color: var(--success);
+}
+@media (max-width: 480px) {
+  .export-fields {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Avisos */
+.toast-region {
+  position: fixed;
+  inset: auto 20px 20px auto;
+  width: min(380px, calc(100vw - 32px));
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--ink);
+  overflow: visible;
+}
+.toast-region > ol {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.toast {
+  --toast-color: var(--success);
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 12px 8px 12px 14px;
+  overflow: hidden;
+  background: #2a2b34;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  box-shadow: 0 14px 36px #0008;
+  font-size: 13px;
+  animation: toast-in 0.24s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.toast.error {
+  --toast-color: var(--error);
+}
+.toast.info {
+  --toast-color: var(--blue);
+}
+.toast > svg {
+  margin-top: 1px;
+  color: var(--toast-color);
+}
+.toast > p {
+  flex: 1;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+.toast::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0;
+  height: 2px;
+  background: var(--toast-color);
+  opacity: 0.45;
+  transform-origin: left;
+  animation: toast-timer var(--toast-duration) linear forwards;
+}
+.toast[data-paused]::after {
+  animation-play-state: paused;
+}
+.toast > .icon-button {
+  width: 26px;
+  height: 26px;
+  margin: -3px 0;
+}
+
+/* Sliders */
+.range {
+  --fill: 0%;
+  appearance: none;
+  width: 100%;
+  height: 18px;
+  margin: 0;
+  background: transparent;
+  cursor: pointer;
+}
+.range::-webkit-slider-runnable-track {
+  height: 4px;
+  border-radius: 4px;
+  background: linear-gradient(
+    to right,
+    var(--accent) var(--fill),
+    var(--line) var(--fill)
+  );
+}
+.range::-moz-range-track {
+  height: 4px;
+  border-radius: 4px;
+  background: var(--line);
+}
+.range::-moz-range-progress {
+  height: 4px;
+  border-radius: 4px;
+  background: var(--accent);
+}
+.range::-webkit-slider-thumb {
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  margin-top: -5px;
+  border: 0;
+  border-radius: 50%;
+  background: var(--ink);
+  box-shadow: 0 1px 3px #0007;
+  transition: transform 0.12s;
+}
+.range::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  border: 0;
+  border-radius: 50%;
+  background: var(--ink);
+  box-shadow: 0 1px 3px #0007;
+}
+.range:hover::-webkit-slider-thumb,
+.range:active::-webkit-slider-thumb {
+  transform: scale(1.15);
+}
+.range:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+.range:focus-visible {
+  outline: none;
+}
+.range:focus-visible::-webkit-slider-thumb {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+.range:focus-visible::-moz-range-thumb {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+.slider-field {
+  gap: 4px;
+}
+.slider-field > span {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+.slider-field output {
+  float: none;
+  color: var(--faint);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Número com unidade */
+.number-input {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  padding-right: 10px;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  background: var(--sidebar);
+}
+.number-input:focus-within {
+  border-color: var(--accent);
+}
+.number-input > input {
+  flex: 1;
+  min-width: 0;
+  border: 0;
+  background: transparent;
+  padding: 8px 10px;
+  font-variant-numeric: tabular-nums;
+}
+.number-input > input:focus-visible {
+  outline: none;
+}
+.number-input > span {
+  color: var(--faint);
+  font-size: 12px;
+  white-space: nowrap;
+}
+.number-input:has(input:disabled) {
+  opacity: 0.5;
+}
+
+@keyframes pop-in {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+}
+@keyframes toast-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.98);
+  }
+}
+@keyframes toast-timer {
+  to {
+    transform: scaleX(0);
+  }
+}
