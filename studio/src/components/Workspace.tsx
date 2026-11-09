@@ -67,6 +67,7 @@ export function Workspace({
   onSelect: (path: string) => void;
 }) {
   const { manifest } = project;
+  const [adjustmentBaseline] = useState(manifest);
   const mainFile =
     manifest.approvedFile ?? project.latestVideo ?? project.source ?? "";
   const [inspector, setInspector] = useState<InspectorTab>("project");
@@ -459,6 +460,8 @@ export function Workspace({
         {inspector === "notes" && (
           <ReviewNotes
             project={project}
+            audition={audition}
+            baseline={adjustmentBaseline}
             clock={clock}
             selected={selected}
             onSeek={(note: Note) =>

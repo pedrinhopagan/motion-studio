@@ -1,17 +1,23 @@
 import { useState, type FormEvent } from "react";
-import { Check, MessageSquare, Clock3 } from "lucide-react";
-import type { Project, Note } from "@shared/contracts";
+import { Check, Copy, MessageSquare, Clock3 } from "lucide-react";
+import type { Audition, Manifest, Project, Note } from "@shared/contracts";
 import { useStudioWrite } from "@/lib/api";
 import { useClock, type Clock } from "@/lib/clock";
 import { formatTime, cn } from "@/lib/format";
+import { adjustmentsText } from "@/lib/adjustment-text";
+import { useCopy, useToast } from "@/components/ui/Toast";
 
 export function ReviewNotes({
   project,
+  audition,
+  baseline,
   clock,
   selected,
   onSeek,
 }: {
   project: Project;
+  audition: Audition;
+  baseline: Pick<Manifest, "audition" | "scenes" | "duration">;
   clock: Clock;
   selected: string;
   onSeek: (note: Note) => void;
@@ -19,6 +25,8 @@ export function ReviewNotes({
   const [text, setText] = useState("");
   const [timestamp, setTimestamp] = useState(!!selected);
   const [showResolved, setShowResolved] = useState(false);
+  const copy = useCopy();
+  const toast = useToast();
   const { mutate, isPending } = useStudioWrite({
     path: `/api/projects/${project.manifest.id}/notes`,
     method: "POST",
@@ -38,6 +46,35 @@ export function ReviewNotes({
         : {}),
     });
   }
+
+  async function handleCopy() {
+    const prompt = adjustmentsText({
+      notes: [
+        ...project.manifest.notes.filter((note) => !note.resolved),
+        ...(text.trim()
+          ? [{
+              text: text.trim(),
+              ...(timestamp && selected
+                ? { time: Math.round(clock.get() * 100) / 100, file: selected }
+                : {}),
+            }]
+          : []),
+      ],
+      ...(project.source ? { source: project.source } : {}),
+      baseline,
+      audition,
+      scenes: project.manifest.scenes,
+      duration: project.manifest.duration,
+    });
+
+    if (!prompt) {
+      toast("Não há ajustes pendentes para copiar.", "info");
+      return;
+    }
+
+    await copy(prompt, "Ajustes copiados. Cole na conversa com o agent.");
+  }
+
   return (
     <div className="review-notes">
       <div className="inspector-section-heading">
@@ -81,6 +118,10 @@ export function ReviewNotes({
           {isPending ? "Salvando…" : "Adicionar anotação"}
         </button>
       </form>
+      <button className="button small" onClick={handleCopy}>
+        <Copy size={14} />
+        Copiar ajustes
+      </button>
       <label className="checkbox-label show-resolved">
         <input
           type="checkbox"
