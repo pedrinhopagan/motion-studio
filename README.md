@@ -4,13 +4,9 @@
 
 # Motion Studio
 
-**A local studio for videos made in code.**<br>
-Preview the scene. Find the sound. Review the next version.
+**A local studio for videos made in code.**<br>Preview the scene. Find the sound. Review the next version.
 
-![TypeScript](https://img.shields.io/badge/TypeScript-1d1f25?style=flat-square&logo=typescript&logoColor=white)
-![Bun](https://img.shields.io/badge/Bun-1d1f25?style=flat-square&logo=bun&logoColor=white)
-![React](https://img.shields.io/badge/React-19-1d1f25?style=flat-square&logo=react&logoColor=white)
-![FFmpeg](https://img.shields.io/badge/FFmpeg-1d1f25?style=flat-square&logo=ffmpeg&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-1d1f25?style=flat-square&logo=typescript&logoColor=white) ![Bun](https://img.shields.io/badge/Bun-1d1f25?style=flat-square&logo=bun&logoColor=white) ![React](https://img.shields.io/badge/React-19-1d1f25?style=flat-square&logo=react&logoColor=white) ![FFmpeg](https://img.shields.io/badge/FFmpeg-1d1f25?style=flat-square&logo=ffmpeg&logoColor=white)
 
 [Run locally](#run-locally) · [Project files](#project-files) · [Under the hood](#under-the-hood)
 
@@ -64,7 +60,7 @@ bun run build
 bun run start
 ```
 
-Open [localhost:4318](http://localhost:4318). The app reads and writes project files inside the cloned repository.
+Open [localhost:4318](http://localhost:4318). The app reads and writes project files inside the cloned repository. The bundled Dogama composition includes its scene map and audio choices; local review documents and rendered versions are not included.
 
 For development, run `bun run dev` and open [localhost:4317](http://localhost:4317). The API uses port `4318`; composition previews use `4319`.
 
