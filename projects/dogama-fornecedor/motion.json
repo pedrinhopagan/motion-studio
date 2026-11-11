@@ -3,21 +3,14 @@
   "id": "dogama-fornecedor",
   "name": "Dogama: vídeo do fornecedor",
   "description": "",
-  "status": "approved",
+  "status": "draft",
   "favorite": false,
   "width": 1440,
   "height": 1440,
   "fps": 60,
   "duration": 29.8667,
   "createdAt": "2026-09-29T20:30:46.446Z",
-  "contextPaths": [
-    ".koworker/tasks/acervo-de-motion-designs--132b236d/dogama-video-do-fornecedor-com-erp-e-catalogo-dr--e9c45336/prompt-video.md",
-    ".koworker/tasks/acervo-de-motion-designs--132b236d/dogama-video-do-fornecedor-com-erp-e-catalogo-dr--e9c45336/acervo.md",
-    ".koworker/tasks/acervo-de-motion-designs--132b236d/padrao-de-criacao-dos-videos-de-produto--306c1d4f/caso-dogama-fornecedor.md",
-    ".koworker/tasks/acervo-de-motion-designs--132b236d/padrao-de-criacao-dos-videos-de-produto--306c1d4f/narrativa-e-ritmo.md",
-    ".koworker/tasks/acervo-de-motion-designs--132b236d/padrao-de-criacao-dos-videos-de-produto--306c1d4f/som.md",
-    ".koworker/tasks/acervo-de-motion-designs--132b236d/migrar-render-para-gpu--3363b885/gpu.md"
-  ],
+  "contextPaths": [],
   "scenes": [
     {
       "id": "erp",
@@ -417,6 +410,5 @@
         "volume": 0.5
       }
     ]
-  },
-  "approvedFile": "renders/dogama-fornecedor/v5/dogama-fornecedor.mp4"
+  }
 }
